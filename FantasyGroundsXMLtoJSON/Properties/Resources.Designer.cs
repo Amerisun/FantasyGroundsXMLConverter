@@ -59,23 +59,5 @@ namespace FantasyGroundsXMLtoJson.Properties {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; version=&quot;2.0&quot;&gt;
-        ///	&lt;xsl:output method = &quot;text&quot; encoding = &quot;iso-8859-1&quot;/&gt;
-        ///	&lt;xsl:strip-space elements=&quot;*&quot;/&gt;
-        ///   
-        ///	&lt;xsl:template match=&quot;/&quot;&gt;
-        ///		&lt;xsl:text&gt;{&amp;#10;  &amp;#10;  {&amp;#10;&lt;/xsl:text&gt;
-        ///		&lt;xsl:for-each select=&quot;//character&quot;&gt;
-        ///			&lt;xsl:variable name=&quot;lowercase&quot; select=&quot;&apos;abcdefghijklmnopqrstuvwxyz&apos;&quot; /&gt;
-        ///			&lt;xsl:variable name=&quot;uppercase&quot; select=&quot;&apos;ABCDEFGHIJKLMNOPQRSTUVWXYZ&apos;&quot; /&gt;
-        ///			&lt;xsl:variable name=&quot;strBo [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string _5e_xsl {
-            get {
-                return ResourceManager.GetString("5e.xsl", resourceCulture);
-            }
-        }
     }
 }

@@ -29,26 +29,35 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
-            this.ofdMain = new System.Windows.Forms.OpenFileDialog();
+            this.ofdGetFGXML = new System.Windows.Forms.OpenFileDialog();
             this.btnMain = new System.Windows.Forms.Button();
             this.clbMain = new System.Windows.Forms.CheckedListBox();
             this.btnProcessFiles = new System.Windows.Forms.Button();
-            this.fbdMain = new System.Windows.Forms.FolderBrowserDialog();
+            this.fbdOutputDirectory = new System.Windows.Forms.FolderBrowserDialog();
             this.txtOutputDirectory = new System.Windows.Forms.TextBox();
             this.lblOutputFile = new System.Windows.Forms.Label();
             this.btnOutputDirectory = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.txtXSLLocation = new System.Windows.Forms.TextBox();
+            this.lblXSL = new System.Windows.Forms.Label();
+            this.btnFindXSL = new System.Windows.Forms.Button();
+            this.btnXSLEmbeded = new System.Windows.Forms.Button();
+            this.ofdGetXSL = new System.Windows.Forms.OpenFileDialog();
+            this.msMain = new System.Windows.Forms.MenuStrip();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.websiteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.releaseNotesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.msMain.SuspendLayout();
             this.SuspendLayout();
             // 
-            // ofdMain
+            // ofdGetFGXML
             // 
-            this.ofdMain.FileName = "ofdMain";
-            this.ofdMain.Multiselect = true;
+            this.ofdGetFGXML.FileName = "ofdGetFGXML";
+            this.ofdGetFGXML.Multiselect = true;
             // 
             // btnMain
             // 
-            this.btnMain.Location = new System.Drawing.Point(12, 12);
+            this.btnMain.Location = new System.Drawing.Point(12, 27);
             this.btnMain.Name = "btnMain";
             this.btnMain.Size = new System.Drawing.Size(213, 32);
             this.btnMain.TabIndex = 0;
@@ -60,7 +69,7 @@
             // 
             this.clbMain.CheckOnClick = true;
             this.clbMain.FormattingEnabled = true;
-            this.clbMain.Location = new System.Drawing.Point(12, 56);
+            this.clbMain.Location = new System.Drawing.Point(12, 71);
             this.clbMain.Name = "clbMain";
             this.clbMain.Size = new System.Drawing.Size(776, 130);
             this.clbMain.TabIndex = 1;
@@ -68,7 +77,7 @@
             // 
             // btnProcessFiles
             // 
-            this.btnProcessFiles.Location = new System.Drawing.Point(12, 259);
+            this.btnProcessFiles.Location = new System.Drawing.Point(12, 290);
             this.btnProcessFiles.Name = "btnProcessFiles";
             this.btnProcessFiles.Size = new System.Drawing.Size(213, 32);
             this.btnProcessFiles.TabIndex = 2;
@@ -78,16 +87,16 @@
             // 
             // txtOutputDirectory
             // 
-            this.txtOutputDirectory.Location = new System.Drawing.Point(12, 217);
+            this.txtOutputDirectory.Location = new System.Drawing.Point(12, 232);
             this.txtOutputDirectory.Name = "txtOutputDirectory";
-            this.txtOutputDirectory.Size = new System.Drawing.Size(284, 23);
+            this.txtOutputDirectory.Size = new System.Drawing.Size(653, 23);
             this.txtOutputDirectory.TabIndex = 3;
             this.txtOutputDirectory.Leave += new System.EventHandler(this.txtOutputDirectory_Leave);
             // 
             // lblOutputFile
             // 
             this.lblOutputFile.AutoSize = true;
-            this.lblOutputFile.Location = new System.Drawing.Point(12, 199);
+            this.lblOutputFile.Location = new System.Drawing.Point(12, 214);
             this.lblOutputFile.Name = "lblOutputFile";
             this.lblOutputFile.Size = new System.Drawing.Size(96, 15);
             this.lblOutputFile.TabIndex = 4;
@@ -95,7 +104,7 @@
             // 
             // btnOutputDirectory
             // 
-            this.btnOutputDirectory.Location = new System.Drawing.Point(302, 217);
+            this.btnOutputDirectory.Location = new System.Drawing.Point(671, 231);
             this.btnOutputDirectory.Name = "btnOutputDirectory";
             this.btnOutputDirectory.Size = new System.Drawing.Size(117, 23);
             this.btnOutputDirectory.TabIndex = 5;
@@ -103,39 +112,113 @@
             this.btnOutputDirectory.UseVisualStyleBackColor = true;
             this.btnOutputDirectory.Click += new System.EventHandler(this.btnOutputDirectory_Click);
             // 
-            // textBox1
+            // txtXSLLocation
             // 
-            this.textBox1.Location = new System.Drawing.Point(425, 217);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 23);
-            this.textBox1.TabIndex = 6;
+            this.txtXSLLocation.Location = new System.Drawing.Point(12, 261);
+            this.txtXSLLocation.Name = "txtXSLLocation";
+            this.txtXSLLocation.Size = new System.Drawing.Size(578, 23);
+            this.txtXSLLocation.TabIndex = 6;
+            this.txtXSLLocation.Text = "Embeded";
+            this.txtXSLLocation.Leave += new System.EventHandler(this.txtXSLLocation_Leave);
             // 
-            // label1
+            // lblXSL
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(425, 199);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(38, 15);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "label1";
+            this.lblXSL.AutoSize = true;
+            this.lblXSL.Location = new System.Drawing.Point(425, 214);
+            this.lblXSL.Name = "lblXSL";
+            this.lblXSL.Size = new System.Drawing.Size(47, 15);
+            this.lblXSL.TabIndex = 7;
+            this.lblXSL.Text = "XSL File";
+            // 
+            // btnFindXSL
+            // 
+            this.btnFindXSL.Location = new System.Drawing.Point(596, 261);
+            this.btnFindXSL.Name = "btnFindXSL";
+            this.btnFindXSL.Size = new System.Drawing.Size(92, 23);
+            this.btnFindXSL.TabIndex = 8;
+            this.btnFindXSL.Text = "Choose XSL";
+            this.btnFindXSL.UseVisualStyleBackColor = true;
+            this.btnFindXSL.Click += new System.EventHandler(this.btnFindXSL_Click);
+            // 
+            // btnXSLEmbeded
+            // 
+            this.btnXSLEmbeded.Location = new System.Drawing.Point(694, 261);
+            this.btnXSLEmbeded.Name = "btnXSLEmbeded";
+            this.btnXSLEmbeded.Size = new System.Drawing.Size(94, 23);
+            this.btnXSLEmbeded.TabIndex = 9;
+            this.btnXSLEmbeded.Text = "Use Embeded";
+            this.btnXSLEmbeded.UseVisualStyleBackColor = true;
+            this.btnXSLEmbeded.Click += new System.EventHandler(this.btnXSLEmbeded_Click);
+            // 
+            // ofdGetXSL
+            // 
+            this.ofdGetXSL.FileName = "ofdGetXSL";
+            // 
+            // msMain
+            // 
+            this.msMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem1});
+            this.msMain.Location = new System.Drawing.Point(0, 0);
+            this.msMain.Name = "msMain";
+            this.msMain.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            this.msMain.Size = new System.Drawing.Size(800, 24);
+            this.msMain.TabIndex = 10;
+            this.msMain.Text = "menuStrip1";
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.websiteToolStripMenuItem,
+            this.releaseNotesToolStripMenuItem,
+            this.aboutToolStripMenuItem});
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(44, 20);
+            this.toolStripMenuItem1.Text = "Help";
+            // 
+            // websiteToolStripMenuItem
+            // 
+            this.websiteToolStripMenuItem.Name = "websiteToolStripMenuItem";
+            this.websiteToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.websiteToolStripMenuItem.Text = "Website";
+            this.websiteToolStripMenuItem.Click += new System.EventHandler(this.websiteToolStripMenuItem_Click);
+            // 
+            // releaseNotesToolStripMenuItem
+            // 
+            this.releaseNotesToolStripMenuItem.Name = "releaseNotesToolStripMenuItem";
+            this.releaseNotesToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.releaseNotesToolStripMenuItem.Text = "Release Notes";
+            this.releaseNotesToolStripMenuItem.Click += new System.EventHandler(this.releaseNotesToolStripMenuItem_Click);
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.aboutToolStripMenuItem.Text = "About";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 306);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
+            this.ClientSize = new System.Drawing.Size(800, 328);
+            this.Controls.Add(this.btnXSLEmbeded);
+            this.Controls.Add(this.btnFindXSL);
+            this.Controls.Add(this.lblXSL);
+            this.Controls.Add(this.txtXSLLocation);
             this.Controls.Add(this.btnOutputDirectory);
             this.Controls.Add(this.lblOutputFile);
             this.Controls.Add(this.txtOutputDirectory);
             this.Controls.Add(this.btnProcessFiles);
             this.Controls.Add(this.clbMain);
             this.Controls.Add(this.btnMain);
+            this.Controls.Add(this.msMain);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MainMenuStrip = this.msMain;
             this.Name = "frmMain";
             this.Text = "Fantasy Grounds XML to Json Converter";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMain_FormClosing);
+            this.msMain.ResumeLayout(false);
+            this.msMain.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -143,15 +226,23 @@
 
         #endregion
 
-        private OpenFileDialog ofdMain;
+        private OpenFileDialog ofdGetFGXML;
         private Button btnMain;
         private CheckedListBox clbMain;
         private Button btnProcessFiles;
-        private FolderBrowserDialog fbdMain;
+        private FolderBrowserDialog fbdOutputDirectory;
         private TextBox txtOutputDirectory;
         private Label lblOutputFile;
         private Button btnOutputDirectory;
-        private TextBox textBox1;
-        private Label label1;
+        private TextBox txtXSLLocation;
+        private Label lblXSL;
+        private Button btnFindXSL;
+        private Button btnXSLEmbeded;
+        private OpenFileDialog ofdGetXSL;
+        private MenuStrip msMain;
+        private ToolStripMenuItem toolStripMenuItem1;
+        private ToolStripMenuItem aboutToolStripMenuItem;
+        private ToolStripMenuItem websiteToolStripMenuItem;
+        private ToolStripMenuItem releaseNotesToolStripMenuItem;
     }
 }

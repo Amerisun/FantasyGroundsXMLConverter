@@ -3,7 +3,7 @@
 	<xsl:strip-space elements="*"/>
    
 	<xsl:template match="/">
-		<xsl:text>{&#10;  &#10;  {&#10;</xsl:text>
+		<xsl:text>{&#10;</xsl:text>
 		<xsl:for-each select="//character">
 			<xsl:variable name="lowercase" select="'abcdefghijklmnopqrstuvwxyz'" />
 			<xsl:variable name="uppercase" select="'ABCDEFGHIJKLMNOPQRSTUVWXYZ'" />
@@ -17,19 +17,19 @@
 			
 			<!-- Core Info -->
 			<xsl:text>      &#10;        "playerName":"</xsl:text>			
-			<xsl:value-of select="name" />
+			<xsl:value-of select="name" /><xsl:text>"</xsl:text>
 			<xsl:text>      &#10;        "background":"</xsl:text>			
-			<xsl:value-of select="background" />
+			<xsl:value-of select="background" /><xsl:text>"</xsl:text>
 			<xsl:text>      &#10;        "faction":"</xsl:text>			
-			<xsl:value-of select="faction" />
+			<xsl:value-of select="faction" /><xsl:text>"</xsl:text>
 			<xsl:text>      &#10;        "race":"</xsl:text>			
-			<xsl:value-of select="race" />
+			<xsl:value-of select="race" /><xsl:text>"</xsl:text>
 			<xsl:text>      &#10;        "alignment":"</xsl:text>			
-			<xsl:value-of select="alignment" />
+			<xsl:value-of select="alignment" /><xsl:text>"</xsl:text>
 			<xsl:text>      &#10;        "xp":"</xsl:text>			
-			<xsl:value-of select="exp" />
+			<xsl:value-of select="exp" /><xsl:text>"</xsl:text>
 			<xsl:text>      &#10;        "dciNo":"</xsl:text>			
-			<xsl:value-of select="dci" />
+			<xsl:value-of select="dci" /><xsl:text>"</xsl:text>
 			<xsl:text>      &#10;        "classLevel":"</xsl:text>	
 
 			<!-- Class and Level -->
@@ -37,40 +37,87 @@
 			<!-- Abbreviate if more than 1 class -->
 			<xsl:if test="count(classes/*) &gt; 1">
 				<xsl:for-each select="classes/*">
-					<xsl:value-of select="substring(concat(name,'   '),1,3)" />(<xsl:value-of select="level" />) 
-				</xsl:for-each>				
+					<xsl:value-of select="substring(concat(name,'   '),1,3)" />(<xsl:value-of select="level" />) </xsl:for-each>				
 			</xsl:if>
 			<!-- otherwise show the full class name -->
 			<xsl:if test="count(classes/*) &lt; 2">
 				<xsl:for-each select="classes/*">
-					<xsl:value-of select="name" />(<xsl:value-of select="level" />)
-				</xsl:for-each>
-			</xsl:if>			
-			
+					<xsl:value-of select="name" />(<xsl:value-of select="level" />)</xsl:for-each>
+			</xsl:if>
+			<xsl:text>"</xsl:text>
+      
 			<!-- Stats -->				
 			<xsl:text>      &#10;        "str":"</xsl:text>	
-			<xsl:value-of select="abilities/strength/score" />
+			<xsl:value-of select="abilities/strength/score" /><xsl:text>"</xsl:text>
 			<xsl:text>      &#10;        "dex":"</xsl:text>	
-			<xsl:value-of select="abilities/dexterity/score" />
+			<xsl:value-of select="abilities/dexterity/score" /><xsl:text>"</xsl:text>
 			<xsl:text>      &#10;        "con":"</xsl:text>	
-			<xsl:value-of select="abilities/constitution/score" />
+			<xsl:value-of select="abilities/constitution/score" /><xsl:text>"</xsl:text>
 			<xsl:text>      &#10;        "int":"</xsl:text>	
-			<xsl:value-of select="abilities/intelligence/score" />
+			<xsl:value-of select="abilities/intelligence/score" /><xsl:text>"</xsl:text>
 			<xsl:text>      &#10;        "wis":"</xsl:text>	
-			<xsl:value-of select="abilities/wisdom/score" />
+			<xsl:value-of select="abilities/wisdom/score" /><xsl:text>"</xsl:text>
 			<xsl:text>      &#10;        "cha":"</xsl:text>	
-			<xsl:value-of select="abilities/charisma/score" />
-				
-			<!-- Proficiency Bonus -->				
-			<xsl:if test="profbonus >= 0">+</xsl:if><xsl:value-of select="profbonus" />
+			<xsl:value-of select="abilities/charisma/score" /><xsl:text>"</xsl:text>
+
+			<!-- Inspiration -->
+		    <xsl:text>      &#10;        "inspiration":"</xsl:text>
+			<xsl:value-of select="inspiration" /><xsl:text>"</xsl:text>
+		    <!-- Proficiency Bonus -->
+		    <xsl:text>      &#10;        "proficiencyBonus":"</xsl:text>
+		    <xsl:if test="profbonus >= 0">+</xsl:if><xsl:value-of select="profbonus" /><xsl:text>"</xsl:text>
+			
 			<!-- Saves -->
-			<xsl:if test="abilities/strength/save >= 0">+</xsl:if><xsl:value-of select="abilities/strength/save" />
-			<xsl:if test="abilities/dexterity/save >= 0">+</xsl:if><xsl:value-of select="abilities/dexterity/save" />
-			<xsl:if test="abilities/constitution/save >= 0">+</xsl:if><xsl:value-of select="abilities/constitution/save" />
-			<xsl:if test="abilities/intelligence/save >= 0">+</xsl:if><xsl:value-of select="abilities/intelligence/save" />
-			<xsl:if test="abilities/wisdom/save >= 0">+</xsl:if><xsl:value-of select="abilities/wisdom/save" />
-			<xsl:if test="abilities/charisma/save >= 0">+</xsl:if><xsl:value-of select="abilities/charisma/save" />
+			<xsl:text>      &#10;        "strSave":"</xsl:text>
+			<xsl:if test="abilities/strength/save >= 0">+</xsl:if><xsl:value-of select="abilities/strength/save" /><xsl:text>"</xsl:text>
+			<xsl:choose>
+				<xsl:when test="abilities/strength/saveprof = 1" >
+					<xsl:text>      &#10;        "strSaveChecked":true</xsl:text>
+				</xsl:when>
+			</xsl:choose>
+			
+			<xsl:text>      &#10;        "dexSave":"</xsl:text>
+			<xsl:if test="abilities/dexterity/save >= 0">+</xsl:if><xsl:value-of select="abilities/dexterity/save" /><xsl:text>"</xsl:text>
+			<xsl:choose>
+				<xsl:when test="abilities/dexterity/saveprof = 1" >
+					<xsl:text>      &#10;        "dexSaveChecked":true</xsl:text>
+				</xsl:when>
+			</xsl:choose>
+			
+			<xsl:text>      &#10;        "conSave":"</xsl:text>
+			<xsl:if test="abilities/constitution/save >= 0">+</xsl:if><xsl:value-of select="abilities/constitution/save" /><xsl:text>"</xsl:text>
+			<xsl:choose>
+				<xsl:when test="abilities/constitution/saveprof = 1" >
+					<xsl:text>      &#10;        "conSaveChecked":true</xsl:text>
+				</xsl:when>
+			</xsl:choose>
+			
+			<xsl:text>      &#10;        "intSave":"</xsl:text>
+			<xsl:if test="abilities/intelligence/save >= 0">+</xsl:if><xsl:value-of select="abilities/intelligence/save" /><xsl:text>"</xsl:text>
+			<xsl:choose>
+				<xsl:when test="abilities/intelligence/saveprof = 1" >
+					<xsl:text>      &#10;        "intSaveChecked":true</xsl:text>
+				</xsl:when>
+			</xsl:choose>
+			
+			<xsl:text>      &#10;        "wisSave":"</xsl:text>
+			<xsl:if test="abilities/wisdom/save >= 0">+</xsl:if><xsl:value-of select="abilities/wisdom/save" /><xsl:text>"</xsl:text>
+			<xsl:choose>
+				<xsl:when test="abilities/wisdom/saveprof = 1" >
+					<xsl:text>      &#10;        "wisSaveChecked":true</xsl:text>
+				</xsl:when>
+			</xsl:choose>
+
+			<xsl:text>      &#10;        "chaSave":"</xsl:text>
+			<xsl:if test="abilities/charisma/save >= 0">+</xsl:if><xsl:value-of select="abilities/charisma/save" /><xsl:text>"</xsl:text>
+			<xsl:choose>
+				<xsl:when test="abilities/charisma/saveprof = 1" >
+					<xsl:text>      &#10;        "chaSaveChecked":true</xsl:text>
+				</xsl:when>
+			</xsl:choose>
+			
 			<!-- Skills -->
+			<xsl:text>      &#10;        "skillAcrobatics":"</xsl:text>
 			<xsl:if test="skilllist/*[name='Acrobatics']/total >= 0">+</xsl:if><xsl:value-of select="skilllist/*[name='Acrobatics']/total" />
 			<xsl:if test="skilllist/*[name='Animal Handling']/total >= 0">+</xsl:if><xsl:value-of select="skilllist/*[name='Animal Handling']/total" />
 			<xsl:if test="skilllist/*[name='Arcana']/total >= 0">+</xsl:if><xsl:value-of select="skilllist/*[name='Arcana']/total" />
@@ -210,4 +257,17 @@
 			<!-- End of Character -->
 		</xsl:for-each>
 	</xsl:template>
+
+
+  <xsl:template name="checkboxes">
+    <xsl:param name="index" />
+    <xsl:param name="total" />
+    <!-- Loop processing. Wish we could use XSLT 2.0 -->
+    <xsl:if test="not($index = $total)">
+      <xsl:call-template name="checkboxes">
+        <xsl:with-param name="index" select="$index + 1" />
+        <xsl:with-param name="total" select="$total" />
+      </xsl:call-template>
+    </xsl:if>
+  </xsl:template>
 </xsl:stylesheet>

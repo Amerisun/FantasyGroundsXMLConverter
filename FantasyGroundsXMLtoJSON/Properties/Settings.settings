@@ -5,5 +5,8 @@
     <Setting Name="OutputDirectory" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
+    <Setting Name="XSLFileLocation" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Embeded</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

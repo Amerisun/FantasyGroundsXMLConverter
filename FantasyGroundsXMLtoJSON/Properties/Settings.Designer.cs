@@ -34,5 +34,17 @@ namespace FantasyGroundsXMLtoJson.Properties {
                 this["OutputDirectory"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Embeded")]
+        public string XSLFileLocation {
+            get {
+                return ((string)(this["XSLFileLocation"]));
+            }
+            set {
+                this["XSLFileLocation"] = value;
+            }
+        }
     }
 }

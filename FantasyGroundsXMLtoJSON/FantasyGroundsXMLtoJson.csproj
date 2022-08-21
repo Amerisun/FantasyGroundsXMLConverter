@@ -8,6 +8,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <StartupObject>WinFormsApp1.Program</StartupObject>
     <ApplicationIcon>Logo-180x180.ico</ApplicationIcon>
+    <Company>Amerisun Gaming and Tech</Company>
+    <Description>This is a simple application that does XSL transforms, specifically to transform Fantasy Grounds XML characters to Json format for the DarylBuckle character sheets printing.</Description>
   </PropertyGroup>
 
   <ItemGroup>
@@ -35,7 +37,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="CharacterSheet_DND5E_To_JSon.xsl">
+    <None Update="5e.xsl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Properties\Settings.settings">
