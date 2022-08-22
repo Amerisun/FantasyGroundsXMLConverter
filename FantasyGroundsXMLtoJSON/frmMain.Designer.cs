@@ -47,6 +47,7 @@
             this.websiteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.releaseNotesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnClearCharXMLFiles = new System.Windows.Forms.Button();
             this.msMain.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -59,7 +60,7 @@
             // 
             this.btnMain.Location = new System.Drawing.Point(12, 27);
             this.btnMain.Name = "btnMain";
-            this.btnMain.Size = new System.Drawing.Size(213, 32);
+            this.btnMain.Size = new System.Drawing.Size(213, 38);
             this.btnMain.TabIndex = 0;
             this.btnMain.Text = "Open Fantasy Grounds XML Files";
             this.btnMain.UseVisualStyleBackColor = true;
@@ -196,11 +197,22 @@
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
+            // btnClearCharXMLFiles
+            // 
+            this.btnClearCharXMLFiles.Location = new System.Drawing.Point(613, 27);
+            this.btnClearCharXMLFiles.Name = "btnClearCharXMLFiles";
+            this.btnClearCharXMLFiles.Size = new System.Drawing.Size(175, 38);
+            this.btnClearCharXMLFiles.TabIndex = 11;
+            this.btnClearCharXMLFiles.Text = "Clear XML Files";
+            this.btnClearCharXMLFiles.UseVisualStyleBackColor = true;
+            this.btnClearCharXMLFiles.Click += new System.EventHandler(this.btnClearCharXMLFiles_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 328);
+            this.Controls.Add(this.btnClearCharXMLFiles);
             this.Controls.Add(this.btnXSLEmbeded);
             this.Controls.Add(this.btnFindXSL);
             this.Controls.Add(this.lblXSL);
@@ -244,5 +256,6 @@
         private ToolStripMenuItem aboutToolStripMenuItem;
         private ToolStripMenuItem websiteToolStripMenuItem;
         private ToolStripMenuItem releaseNotesToolStripMenuItem;
+        private Button btnClearCharXMLFiles;
     }
 }

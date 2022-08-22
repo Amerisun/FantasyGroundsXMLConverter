@@ -20,17 +20,25 @@ namespace WinFormsApp1
             InitializeComponent();
             txtOutputDirectory.Text = FantasyGroundsXMLtoJson.Properties.Settings.Default.OutputDirectory;
             txtXSLLocation.Text = FantasyGroundsXMLtoJson.Properties.Settings.Default.XSLFileLocation;
+            ofdGetXSL.InitialDirectory = FantasyGroundsXMLtoJson.Properties.Settings.Default.XSLDirectoryLocation;
+            fbdOutputDirectory.InitialDirectory = FantasyGroundsXMLtoJson.Properties.Settings.Default.OutputDirectory;
+            ofdGetFGXML.InitialDirectory = FantasyGroundsXMLtoJson.Properties.Settings.Default.XMLCharacterLocation;
         }
 
         private void btnMain_Click(object sender, EventArgs e)
         {
             ofdGetFGXML.Title = "Choose Fantasy Grounds XML Files"; 
+            ofdGetFGXML.Filter = "xml files (*.xml)|*.xml";
             DialogResult dr = this.ofdGetFGXML.ShowDialog();
             if (dr == System.Windows.Forms.DialogResult.OK)
             {
                 foreach (var item in ofdGetFGXML.FileNames)
                 {
-                    clbMain.Items.Add(item, true);
+                    if (!clbMain.Items.Contains(item))
+                    {
+                        clbMain.Items.Add(item, true);
+                        ofdGetFGXML.InitialDirectory = System.IO.Path.GetDirectoryName(item);
+                    }
                 }
             }
         }
@@ -38,6 +46,8 @@ namespace WinFormsApp1
         {
             FantasyGroundsXMLtoJson.Properties.Settings.Default.OutputDirectory = txtOutputDirectory.Text;
             FantasyGroundsXMLtoJson.Properties.Settings.Default.XSLFileLocation = txtXSLLocation.Text;
+            FantasyGroundsXMLtoJson.Properties.Settings.Default.XSLDirectoryLocation = ofdGetXSL.InitialDirectory;
+            FantasyGroundsXMLtoJson.Properties.Settings.Default.XMLCharacterLocation = ofdGetFGXML.InitialDirectory;
             FantasyGroundsXMLtoJson.Properties.Settings.Default.Save();
         }
 
@@ -51,7 +61,23 @@ namespace WinFormsApp1
             if (result == DialogResult.OK)
             {
                 txtOutputDirectory.Text = fbdOutputDirectory.SelectedPath;
+                fbdOutputDirectory.InitialDirectory = fbdOutputDirectory.SelectedPath;
+                if (!txtOutputDirectory.Text.EndsWith("\\"))
+                {
+                    txtOutputDirectory.Text = txtOutputDirectory.Text + "\\";
+                }
             }
+        }
+        private void btnFindXSL_Click(object sender, EventArgs e)
+        {
+            string folderPath = "";
+            ofdGetXSL.Filter = "xsl files (*.xsl)|*.xsl";
+            if (ofdGetXSL.ShowDialog() == DialogResult.OK)
+            {
+                txtXSLLocation.Text = ofdGetXSL.FileName;
+                folderPath = Path.GetDirectoryName(ofdGetXSL.FileName);
+            }
+            ofdGetXSL.InitialDirectory = folderPath;
         }
 
         private void btnProcessFiles_Click(object sender, EventArgs e)
@@ -75,11 +101,11 @@ namespace WinFormsApp1
                     if (clbMain.GetItemCheckState(i).Equals(CheckState.Checked))
                     {
                         string xmlCharFileName = clbMain.Items[i].ToString();
-                        string xmlCharFileNameJsonExtention = System.IO.Path.ChangeExtension(xmlCharFileName, ".json");
+                        string jsonCharFileName = txtOutputDirectory.Text + System.IO.Path.ChangeExtension(Path.GetFileName(xmlCharFileName), ".json");
 
                         XPathDocument myCharacterData = new XPathDocument(xmlCharFileName);
 
-                        FileStream writer = new FileStream(xmlCharFileNameJsonExtention, FileMode.OpenOrCreate);
+                        FileStream writer = new FileStream(jsonCharFileName, FileMode.Create);
 
                         myXslTransform.Transform(myCharacterData, null, writer, null);
 
@@ -92,6 +118,11 @@ namespace WinFormsApp1
             }
         }
 
+        private void btnXSLEmbeded_Click(object sender, EventArgs e)
+        {
+            txtXSLLocation.Text = "Embeded";
+        }
+
         private void txtOutputDirectory_Leave(object sender, EventArgs e)
         {
             if (!Directory.Exists(txtOutputDirectory.Text) && !(txtOutputDirectory.Text == ""))
@@ -99,14 +130,10 @@ namespace WinFormsApp1
                 MessageBox.Show("Directory cannot be found, please enter a directory that exists");
                 txtOutputDirectory.Text = "";
             }
-        }
 
-        private void btnFindXSL_Click(object sender, EventArgs e)
-        {
-            ofdGetXSL.Filter = "xsl files (*.xsl)|*.xsl";
-            if (ofdGetXSL.ShowDialog() == DialogResult.OK)
+            if (!txtOutputDirectory.Text.EndsWith("\\"))
             {
-                txtXSLLocation.Text = ofdGetXSL.FileName;
+                txtOutputDirectory.Text = txtOutputDirectory.Text + "\\";
             }
         }
 
@@ -117,11 +144,6 @@ namespace WinFormsApp1
                 MessageBox.Show("XSL cannot be found, please enter or find an XSL that exists");
                 txtXSLLocation.Text = "Embeded";
             }
-        }
-
-        private void btnXSLEmbeded_Click(object sender, EventArgs e)
-        {
-            txtXSLLocation.Text = "Embeded";
         }
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
@@ -167,6 +189,11 @@ namespace WinFormsApp1
                     throw;
                 }
             }
+        }
+
+        private void btnClearCharXMLFiles_Click(object sender, EventArgs e)
+        {
+            clbMain.Items.Clear();
         }
     }
 }
