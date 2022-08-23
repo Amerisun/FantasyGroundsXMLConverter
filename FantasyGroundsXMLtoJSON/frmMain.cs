@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using System.Xml;
 using System.Xml.XPath;
 using System.Xml.Xsl;
+using Saxon.Api;
 
 namespace WinFormsApp1
 {
@@ -85,16 +86,29 @@ namespace WinFormsApp1
             // Only process if there is a directory to output, an XSL chosen and something in the combo box chosen.
             if (txtXSLLocation.Text != "" && txtOutputDirectory.Text != "" && clbMain.CheckedItems.Count > 0)
             {
-                XslTransform myXslTransform = new XslTransform();
+                Saxon.Api.Processor myProcessor = new Saxon.Api.Processor();
+                XsltCompiler myCompiler = myProcessor.NewXsltCompiler();
+
+                FileStream fs;
+                XsltTransformer xslt;
+                XsltExecutable executable;
+
+                //XslTransform myXslTransform = new XslTransform();
                 if (txtXSLLocation.Text == "Embeded")
                 {
                     string myDirectory = Directory.GetCurrentDirectory();
-                    myXslTransform.Load(myDirectory + @"\5e.xsl");
+                    fs = File.OpenRead(myDirectory + @"\5e.xsl");
+                    //myXslTransform.Load(myDirectory + @"\5e.xsl");
                 }
                 else
                 {
-                    myXslTransform.Load(txtXSLLocation.Text);
+                    fs = File.OpenRead(txtXSLLocation.Text);
+                    //myXslTransform.Load(txtXSLLocation.Text);
                 }
+
+                executable = myCompiler.Compile(fs);
+
+                xslt = executable.Load();
 
                 for (int i = 0; i < clbMain.Items.Count; i++)
                 {
@@ -107,7 +121,14 @@ namespace WinFormsApp1
 
                         FileStream writer = new FileStream(jsonCharFileName, FileMode.Create);
 
-                        myXslTransform.Transform(myCharacterData, null, writer, null);
+                        FileStream myInputDocument = File.OpenRead(xmlCharFileName);
+                        Uri myUri = new Uri(Path.GetDirectoryName(xmlCharFileName).ToString());
+                        xslt.SetInputStream(myInputDocument, myUri);
+
+                        Serializer mySerializer = myProcessor.NewSerializer(writer);
+                        xslt.Run(mySerializer);
+
+                        //myXslTransform.Transform(myCharacterData, null, writer, null);
 
                         writer.Close();
                     }
