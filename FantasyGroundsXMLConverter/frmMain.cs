@@ -85,33 +85,49 @@ namespace WinFormsApp1
             // Only process if there is a directory to output, an XSL chosen and something in the combo box chosen.
             if (txtXSLLocation.Text != "" && txtOutputDirectory.Text != "" && clbMain.CheckedItems.Count > 0)
             {
-                XslTransform myXslTransform = new XslTransform();
-                if (txtXSLLocation.Text == "Embeded")
+                btnProcessFiles.Enabled = false;
+                int iCounter = 0;
+                try
                 {
-                    string myDirectory = Directory.GetCurrentDirectory();
-                    myXslTransform.Load(myDirectory + @"\5e.xsl");
-                }
-                else
-                {
-                    myXslTransform.Load(txtXSLLocation.Text);
-                }
-
-                for (int i = 0; i < clbMain.Items.Count; i++)
-                {
-                    if (clbMain.GetItemCheckState(i).Equals(CheckState.Checked))
+                    XslTransform myXslTransform = new XslTransform();
+                    if (txtXSLLocation.Text == "Embeded")
                     {
-                        string xmlCharFileName = clbMain.Items[i].ToString();
-                        string jsonCharFileName = txtOutputDirectory.Text + System.IO.Path.ChangeExtension(Path.GetFileName(xmlCharFileName), ".json");
+                        string myDirectory = Directory.GetCurrentDirectory();
+                        myXslTransform.Load(myDirectory + @"\5e.xsl");
+                    }
+                    else
+                    {
+                        myXslTransform.Load(txtXSLLocation.Text);
+                    }
 
-                        XPathDocument myCharacterData = new XPathDocument(xmlCharFileName);
+                    for (int i = 0; i < clbMain.Items.Count; i++)
+                    {
+                        if (clbMain.GetItemCheckState(i).Equals(CheckState.Checked))
+                        {
+                            iCounter++;
+                            string xmlCharFileName = clbMain.Items[i].ToString();
+                            string jsonCharFileName = txtOutputDirectory.Text + System.IO.Path.ChangeExtension(Path.GetFileName(xmlCharFileName), ".json");
 
-                        FileStream writer = new FileStream(jsonCharFileName, FileMode.Create);
+                            XPathDocument myCharacterData = new XPathDocument(xmlCharFileName);
 
-                        myXslTransform.Transform(myCharacterData, null, writer, null);
+                            FileStream writer = new FileStream(jsonCharFileName, FileMode.Create);
 
-                        writer.Close();
+                            myXslTransform.Transform(myCharacterData, null, writer, null);
+
+                            writer.Close();
+                        }
                     }
                 }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message + "\n" + ex.InnerException, "Error Processing XSL", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                    btnProcessFiles.Enabled = true;
+                    return;
+                }
+
+                MessageBox.Show(iCounter.ToString() + " files are processed.", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                btnProcessFiles.Enabled = true;
+                
             } else
             {
                 MessageBox.Show("Please make sure to have at least one XML file checked in the list box, a good XSL chosen and an output directory first");
