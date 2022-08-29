@@ -154,12 +154,12 @@ namespace WinFormsApp1
 
         private void websiteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenBrowser("http://fgxmltojson.amerisun.me/");
+            OpenBrowser("https://amerisun.me/fantasy-grounds-xml-to-json-converter/");
         }
 
         private void releaseNotesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenBrowser("http://fgxmltojson.amerisun.me/releasenotes");
+            OpenBrowser("https://amerisun.me/fantasy-grounds-xml-to-json-converter/releasenotes");
         }
 
         public static void OpenBrowser(string url)

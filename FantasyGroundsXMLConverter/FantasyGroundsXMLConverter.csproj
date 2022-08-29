@@ -9,7 +9,7 @@
     <StartupObject>WinFormsApp1.Program</StartupObject>
     <ApplicationIcon>Logo-180x180.ico</ApplicationIcon>
     <Company>Amerisun Gaming and Tech</Company>
-    <Description>This is a simple application that does XSL transforms, specifically to transform Fantasy Grounds XML characters to Json format for the DarylBuckle character sheets printing.</Description>
+    <Description>This is a simple application that does XSL transforms of Fantasy Grounds, specifically has an XSL to transform characters to Json format for the DarylBuckle character sheets printing.</Description>
   </PropertyGroup>
 
   <ItemGroup>
