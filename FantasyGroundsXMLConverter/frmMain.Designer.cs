@@ -68,9 +68,12 @@
             // 
             // clbMain
             // 
+            this.clbMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.clbMain.CheckOnClick = true;
             this.clbMain.FormattingEnabled = true;
-            this.clbMain.Location = new System.Drawing.Point(12, 71);
+            this.clbMain.Location = new System.Drawing.Point(12, 77);
             this.clbMain.Name = "clbMain";
             this.clbMain.Size = new System.Drawing.Size(776, 130);
             this.clbMain.TabIndex = 1;
@@ -78,6 +81,7 @@
             // 
             // btnProcessFiles
             // 
+            this.btnProcessFiles.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnProcessFiles.Location = new System.Drawing.Point(12, 290);
             this.btnProcessFiles.Name = "btnProcessFiles";
             this.btnProcessFiles.Size = new System.Drawing.Size(213, 32);
@@ -88,6 +92,8 @@
             // 
             // txtOutputDirectory
             // 
+            this.txtOutputDirectory.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtOutputDirectory.Location = new System.Drawing.Point(12, 232);
             this.txtOutputDirectory.Name = "txtOutputDirectory";
             this.txtOutputDirectory.Size = new System.Drawing.Size(653, 23);
@@ -96,6 +102,8 @@
             // 
             // lblOutputFile
             // 
+            this.lblOutputFile.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblOutputFile.AutoSize = true;
             this.lblOutputFile.Location = new System.Drawing.Point(12, 214);
             this.lblOutputFile.Name = "lblOutputFile";
@@ -105,6 +113,7 @@
             // 
             // btnOutputDirectory
             // 
+            this.btnOutputDirectory.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnOutputDirectory.Location = new System.Drawing.Point(671, 231);
             this.btnOutputDirectory.Name = "btnOutputDirectory";
             this.btnOutputDirectory.Size = new System.Drawing.Size(117, 23);
@@ -115,6 +124,8 @@
             // 
             // txtXSLLocation
             // 
+            this.txtXSLLocation.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtXSLLocation.Location = new System.Drawing.Point(12, 261);
             this.txtXSLLocation.Name = "txtXSLLocation";
             this.txtXSLLocation.Size = new System.Drawing.Size(578, 23);
@@ -124,6 +135,8 @@
             // 
             // lblXSL
             // 
+            this.lblXSL.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblXSL.AutoSize = true;
             this.lblXSL.Location = new System.Drawing.Point(425, 214);
             this.lblXSL.Name = "lblXSL";
@@ -133,6 +146,7 @@
             // 
             // btnFindXSL
             // 
+            this.btnFindXSL.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnFindXSL.Location = new System.Drawing.Point(596, 261);
             this.btnFindXSL.Name = "btnFindXSL";
             this.btnFindXSL.Size = new System.Drawing.Size(92, 23);
@@ -143,6 +157,7 @@
             // 
             // btnXSLEmbeded
             // 
+            this.btnXSLEmbeded.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnXSLEmbeded.Location = new System.Drawing.Point(694, 261);
             this.btnXSLEmbeded.Name = "btnXSLEmbeded";
             this.btnXSLEmbeded.Size = new System.Drawing.Size(94, 23);
@@ -199,6 +214,7 @@
             // 
             // btnClearCharXMLFiles
             // 
+            this.btnClearCharXMLFiles.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnClearCharXMLFiles.Location = new System.Drawing.Point(613, 27);
             this.btnClearCharXMLFiles.Name = "btnClearCharXMLFiles";
             this.btnClearCharXMLFiles.Size = new System.Drawing.Size(175, 38);
@@ -226,6 +242,7 @@
             this.Controls.Add(this.msMain);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.msMain;
+            this.MinimumSize = new System.Drawing.Size(816, 367);
             this.Name = "frmMain";
             this.Text = "Fantasy Grounds XML Converter";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMain_FormClosing);
