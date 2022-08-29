@@ -90,7 +90,7 @@ namespace WinFormsApp1
                 try
                 {
                     XslTransform myXslTransform = new XslTransform();
-                    if (txtXSLLocation.Text == "Embeded")
+                    if (txtXSLLocation.Text == "Embedded")
                     {
                         string myDirectory = Directory.GetCurrentDirectory();
                         myXslTransform.Load(myDirectory + @"\5e.xsl");
@@ -134,10 +134,6 @@ namespace WinFormsApp1
             }
         }
 
-        private void btnXSLEmbeded_Click(object sender, EventArgs e)
-        {
-            txtXSLLocation.Text = "Embeded";
-        }
 
         private void txtOutputDirectory_Leave(object sender, EventArgs e)
         {
@@ -158,7 +154,7 @@ namespace WinFormsApp1
             if (!File.Exists(txtXSLLocation.Text) && !(txtXSLLocation.Text == "Embeded"))
             {
                 MessageBox.Show("XSL cannot be found, please enter or find an XSL that exists");
-                txtXSLLocation.Text = "Embeded";
+                txtXSLLocation.Text = "Embedded";
             }
         }
 
@@ -210,6 +206,11 @@ namespace WinFormsApp1
         private void btnClearCharXMLFiles_Click(object sender, EventArgs e)
         {
             clbMain.Items.Clear();
+        }
+
+        private void btnXSLEmbedded_Click(object sender, EventArgs e)
+        {
+            txtXSLLocation.Text = "Embedded";
         }
     }
 }

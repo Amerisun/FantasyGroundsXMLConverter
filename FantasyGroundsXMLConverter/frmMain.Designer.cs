@@ -40,7 +40,7 @@
             this.txtXSLLocation = new System.Windows.Forms.TextBox();
             this.lblXSL = new System.Windows.Forms.Label();
             this.btnFindXSL = new System.Windows.Forms.Button();
-            this.btnXSLEmbeded = new System.Windows.Forms.Button();
+            this.btnXSLEmbedded = new System.Windows.Forms.Button();
             this.ofdGetXSL = new System.Windows.Forms.OpenFileDialog();
             this.msMain = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -130,7 +130,7 @@
             this.txtXSLLocation.Name = "txtXSLLocation";
             this.txtXSLLocation.Size = new System.Drawing.Size(578, 23);
             this.txtXSLLocation.TabIndex = 6;
-            this.txtXSLLocation.Text = "Embeded";
+            this.txtXSLLocation.Text = "Embedded";
             this.txtXSLLocation.Leave += new System.EventHandler(this.txtXSLLocation_Leave);
             // 
             // lblXSL
@@ -155,16 +155,16 @@
             this.btnFindXSL.UseVisualStyleBackColor = true;
             this.btnFindXSL.Click += new System.EventHandler(this.btnFindXSL_Click);
             // 
-            // btnXSLEmbeded
+            // btnXSLEmbedded
             // 
-            this.btnXSLEmbeded.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnXSLEmbeded.Location = new System.Drawing.Point(694, 261);
-            this.btnXSLEmbeded.Name = "btnXSLEmbeded";
-            this.btnXSLEmbeded.Size = new System.Drawing.Size(94, 23);
-            this.btnXSLEmbeded.TabIndex = 9;
-            this.btnXSLEmbeded.Text = "Use Embedded";
-            this.btnXSLEmbeded.UseVisualStyleBackColor = true;
-            this.btnXSLEmbeded.Click += new System.EventHandler(this.btnXSLEmbeded_Click);
+            this.btnXSLEmbedded.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnXSLEmbedded.Location = new System.Drawing.Point(694, 261);
+            this.btnXSLEmbedded.Name = "btnXSLEmbedded";
+            this.btnXSLEmbedded.Size = new System.Drawing.Size(94, 23);
+            this.btnXSLEmbedded.TabIndex = 9;
+            this.btnXSLEmbedded.Text = "Use Embedded";
+            this.btnXSLEmbedded.UseVisualStyleBackColor = true;
+            this.btnXSLEmbedded.Click += new System.EventHandler(this.btnXSLEmbedded_Click);
             // 
             // ofdGetXSL
             // 
@@ -229,7 +229,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 328);
             this.Controls.Add(this.btnClearCharXMLFiles);
-            this.Controls.Add(this.btnXSLEmbeded);
+            this.Controls.Add(this.btnXSLEmbedded);
             this.Controls.Add(this.btnFindXSL);
             this.Controls.Add(this.lblXSL);
             this.Controls.Add(this.txtXSLLocation);
@@ -266,7 +266,7 @@
         private TextBox txtXSLLocation;
         private Label lblXSL;
         private Button btnFindXSL;
-        private Button btnXSLEmbeded;
+        private Button btnXSLEmbedded;
         private OpenFileDialog ofdGetXSL;
         private MenuStrip msMain;
         private ToolStripMenuItem toolStripMenuItem1;
