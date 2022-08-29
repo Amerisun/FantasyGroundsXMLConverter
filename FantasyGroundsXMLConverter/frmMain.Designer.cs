@@ -147,7 +147,7 @@
             this.btnXSLEmbeded.Name = "btnXSLEmbeded";
             this.btnXSLEmbeded.Size = new System.Drawing.Size(94, 23);
             this.btnXSLEmbeded.TabIndex = 9;
-            this.btnXSLEmbeded.Text = "Use Embeded";
+            this.btnXSLEmbeded.Text = "Use Embedded";
             this.btnXSLEmbeded.UseVisualStyleBackColor = true;
             this.btnXSLEmbeded.Click += new System.EventHandler(this.btnXSLEmbeded_Click);
             // 
@@ -227,7 +227,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.msMain;
             this.Name = "frmMain";
-            this.Text = "Fantasy Grounds XML to Json Converter";
+            this.Text = "Fantasy Grounds XML Converter";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMain_FormClosing);
             this.msMain.ResumeLayout(false);
             this.msMain.PerformLayout();
